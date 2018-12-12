@@ -2641,7 +2641,7 @@ static int winusbx_submit_iso_transfer(int sub_api, struct usbi_transfer *itrans
 
 		// Query the pipe extended information to find the pipe index corresponding to the endpoint.
 		for (idx = 0; idx < priv->usb_interface[current_interface].nb_endpoints; ++idx) {
-			ret = WinUSBX[sub_api].QueryPipeEx(winusb_handle, (UINT8)priv->usb_interface[current_interface].current_altsetting, (UCHAR)idx, &pipe_info_ex);
+			ret = WinUSBX[sub_api].QueryPipeEx(winusb_handle, (UCHAR)priv->usb_interface[current_interface].current_altsetting, (UCHAR)idx, &pipe_info_ex);
 			if (!ret) {
 				usbi_dbg("Couldn't query interface settings for USB pipe with index %d. Error: %s", idx, windows_error_str(0));
 				return LIBUSB_ERROR_NOT_FOUND;
